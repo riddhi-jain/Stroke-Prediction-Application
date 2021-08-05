@@ -40,10 +40,10 @@ def result():
 
     # for no stroke risk
     if y_pred_lr == 0:
-        return render_template('nostroke.html')
+        return render_template("nostroke.html")
     else:
-        return render_template('stroke.html')
+        return render_template("stroke.html")
 
  
 if __name__=="__main__":
-    app.run(debug=True,port=7384)
+    app.run(debug=True)
