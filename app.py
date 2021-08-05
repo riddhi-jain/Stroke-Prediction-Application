@@ -24,20 +24,24 @@ def result():
 
     x = np.array([gender,age,hypertension,heart_disease,work_type,Residence_type,avg_glucose_level,bmi,smoking_status]).reshape(1,-1)
     
-    scaler_path = os.path.join(r'C:\Users\Riddhi\flaskwork\Stroke-Prediction-Model', 'scalar.pkl')
+       #scaler_path = os.path.join(r'C:\Users\Riddhi\flaskwork\Stroke-Prediction-Model', 'scalar.pkl')
+    scaler = pickle.load(open(r'C:\Users\Riddhi\flaskwork\Stroke-Prediction-Model\scalar.pkl', 'rb'))
+    '''
     scaler = None
 
     with open(scaler_path, 'rb') as scaler_file:
         scaler = pickle.load(scaler_file)
+    '''
 
     x = scaler.transform(x)
+    
+    #model_path = os.path.join(r'C:\Users\Riddhi\flaskwork\Stroke-Prediction-Model', 'finalized_model.pkl')
 
-    model_path = os.path.join(r'C:\Users\Riddhi\flaskwork\Stroke-Prediction-Model', 'finalized_model.pkl')
-
-    lr = joblib.load(model_path)
-
+    #lr = joblib.load(model_path)
+    
+    lr = pickle.load(open(r'C:\Users\Riddhi\flaskwork\Stroke-Prediction-Model\finalized_model.pkl', 'rb'))
     y_pred_lr = lr.predict(x)
-
+    
     # for no stroke risk
     if y_pred_lr == 0:
         return render_template("nostroke.html")
