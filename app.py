@@ -9,7 +9,7 @@ app = Flask(__name__)
 def index():
     return render_template("home.html")
 
-@app.route("/result", methods = ['POST','GOT'])
+@app.route("/result", methods = ['POST','GET'])
 
 def result():
     gender = int(request.form['gender'])
