@@ -23,9 +23,9 @@ def result():
     smoking_status = int(request.form['smoking_status'])
 
     x = np.array([gender,age,hypertension,heart_disease,work_type,Residence_type,avg_glucose_level,bmi,smoking_status]).reshape(1,-1)
-    
-       #scaler_path = os.path.join(r'C:\Users\Riddhi\flaskwork\Stroke-Prediction-Model', 'scalar.pkl')
-    scaler = pickle.load(open('C:/Users/Riddhi/flaskwork/Stroke-Prediction-Model/scalar.pkl', 'rb'))
+    #scaler_path = os.path.join(r'C:\Users\Riddhi\flaskwork\Stroke-Prediction-Model', 'scalar.pkl')
+    #C:/Users/Riddhi/flaskwork/Stroke-Prediction-Model/
+    scaler = pickle.load(open('scalar.pkl', 'rb'))
     '''
     scaler = None
 
@@ -39,7 +39,7 @@ def result():
 
     #lr = joblib.load(model_path)
     
-    lr = pickle.load(open('C:/Users/Riddhi/flaskwork/Stroke-Prediction-Model/finalized_model.pkl', 'rb'))
+    lr = pickle.load(open('finalized_model.pkl', 'rb'))
     y_pred_lr = lr.predict(x)
     
     # for no stroke risk
